@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
 
     private String name;
@@ -22,7 +22,8 @@ public class Job {
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location,
+               PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -56,10 +57,6 @@ public class Job {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -103,26 +100,58 @@ public class Job {
     }
 
 
+    @Override
+    public String toString() {
+        String strEmployerValue = employer.getValue();
+        String strLocationValue = location.getValue();
+        String strPositionTypeValue = positionType.getValue();
+        String strCoreCompetencyValue = coreCompetency.getValue();
 
+        String dataDoesNotExist = "OOPS! this job does not seem to exist.";
+        if (
+                name.equals("") &&
+                        strEmployerValue.equals("") &&
+                        strLocationValue.equals("") &&
+                        strPositionTypeValue.equals("") &&
+                        strCoreCompetencyValue.equals("")) {
+            return dataDoesNotExist;
+        } else {
+            return "\nID: " + id +
+                    toStringFieldLabelAndValue("Name", name) +
+                    toStringFieldLabelAndValue("Employer", strEmployerValue) +
+                    toStringFieldLabelAndValue("Location", strLocationValue) +
+                    toStringFieldLabelAndValue("Position Type", strPositionTypeValue) +
+                    toStringFieldLabelAndValue("Core Competency", strCoreCompetencyValue) +
+                    "\n";
+        }
+    }
 
+    public String toStringFieldLabelAndValue(String fieldLabel, String fieldValue){
+        String dataNotAvailable = "Data not available";
+        String tempToString = "\n" + fieldLabel + ": ";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if (fieldValue.equals("")) {
+            return tempToString + dataNotAvailable;
+        } else {
+            return tempToString + fieldValue;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
