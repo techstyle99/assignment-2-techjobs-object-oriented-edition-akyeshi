@@ -4,10 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
+import static org.junit.Assert.*;
 
 import javax.swing.text.Position;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by LaunchCode

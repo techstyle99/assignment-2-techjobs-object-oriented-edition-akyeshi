@@ -1,39 +1,50 @@
-package org.launchcode.techjobs.oo.test;
+package org.launchcode.techjobs.oo;
+
 import java.util.Objects;
 
-public class JobField {
+abstract class JobField {
+
     private final int id;
     private static int nextId = 1;
     private String value;
 
+    // Constructors
 
-    public JobField(){
+    public JobField() {
         this.id = nextId;
         nextId++;
     }
 
-    public JobField(String value){
+    public JobField(String value) {
         this();
         this.value = value;
     }
 
-    public int getId(){
+    // Getters
+
+    public int getId() {
         return id;
     }
 
-    public String getValue(){
+    public String getValue() {
         return value;
     }
 
-    public void setValue(String value){
+    // Setter
+
+    public void setValue(String value) {
         this.value = value;
     }
 
-    @Override
-    public String toString(){ return value; }
+    // Methods
 
     @Override
-    public boolean equals(Object o){
+    public String toString() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         JobField jobField = (JobField) o;
@@ -41,10 +52,9 @@ public class JobField {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(id);
     }
 
-
-
 }
+
